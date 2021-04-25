@@ -1,0 +1,49 @@
+#heading{
+    padding-top: 3%;
+    color: grey;
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    text-align: center;
+}
+
+body{
+    background-color: grey;
+}
+
+#todo-container{
+    height: 40rem;
+    width: 50%;
+    margin-left: 25%;
+    background-color: white;
+    box-shadow: 2px 2px 7px 1px rgb(28 110 164);
+    margin-top: 5%;
+    border-radius: 8px;
+}
+
+#description{
+    border: none;
+    padding-left: 1%;
+   
+}
+#msg{
+    padding-left: 1%;
+}   
+#vr{
+    border-right: 2px solid black;
+
+}
+#preference-form{
+    border: none;
+}
+#datepicker{
+    
+    margin-top: 16px;
+}
+.btn-style{
+    margin: 2%;
+}
+i{
+    padding: 2%;
+}
