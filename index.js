@@ -1,9 +1,12 @@
 const express = require("express");
 const app = express();
 const port  = 8000;
-
+app.use(express.urlencoded());
 //middleware to control the routes
 app.use('/',require('./routes/index'));
+
+
+
 
 app.set('view engine','ejs');
 app.set('views','./views');

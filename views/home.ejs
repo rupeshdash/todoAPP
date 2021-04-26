@@ -5,104 +5,106 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    
     <link
       rel="stylesheet"
       href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
       integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  
-    <link rel="stylesheet" href="/css/home.css">
-    
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+
+    <link rel="stylesheet" href="/css/home.css" />
+
     <title><%= title %></title>
   </head>
   <body>
-
-
     <div id="todo-container">
-       
-            <h1 id="heading">TODO app</h1>
-            <hr>
+      <h1 id="heading">TODO app</h1>
+      <hr />
 
-            <form action="">
-                
-                <label for="description" id="description">Example textarea</label>
-                <textarea class="form-control" id="description" rows="3" placeholder="Write you task here"></textarea>
-                <small id="msg" class="form-text text-muted">Keep you task to the point</small>
-            </form>
-            <hr>
-            
-            <div id="catagory-date" class="container">
-                <div class="row">
-                  <div class="col-sm-8" id="vr">
-                    <form class="form-inline" id="preference-form">
-                        <label class="my-1 mr-2" for="catagory-prefrerence">Preference</label>
-                        <select class="custom-select my-1 mr-sm-2" id="catagory-prefrerence">
-                          <option selected>Select your Preference...</option>
-                          <option value="1">Personal</option>
-                          <option value="2">work</option>
-                          <option value="3">School</option>
-                          <option value="4">Secret</option>
-                          <option value="5">others</option>
-                        </select>
-                    </form>
-                  </div>
-                  <div class="col-sm-4">
-                    <p>Date: <input  type="text" id="datepicker" /></p>
-                  </div>
-                 
-                </div>
-              </div>
-              
-              <hr>
+      <!-- The task details submission form -->
+      <form action="/task-data" method="POST">
+        <label for="description" id="description">Example textarea</label>
+        <textarea
+          name="task"
+          class="form-control"
+          id="description"
+          rows="3"
+          placeholder="Write you task here"
+          required
+        ></textarea>
+        <small id="msg" class="form-text text-muted"
+          >Keep you task to the point</small
+        >
 
-              <div>
-                <button type="button" class="btn btn-primary btn-lg btn-danger btn-style">
-                    <i class="fas fa-plus btn-icons"></i>ADD</button>
-                <button type="button" class="btn btn-secondary btn-lg btn-dark btn-style">
-                    <i class="fas fa-trash-alt btn-icons"></i>DELETE
-                </button>
-              </div>
-              <hr>
-                
-                
-              </div>
-              
-       
-        
+        <hr />
+
+        <div id="catagory-date" class="container">
+          <div class="row">
+            <div class="col-sm-8" id="vr">
+              <label class="my-1 mr-2" for="catagory-prefrerence"
+                >Preference</label
+              >
+              <select
+                name="preference"
+                class="custom-select my-1 mr-sm-2"
+                id="catagory-prefrerence"
+                required
+              >
+                <option selected>Select your Preference...</option>
+                <option value="Personal">Personal</option>
+                <option value="work">work</option>
+                <option value="School">School</option>
+                <option value="Secret">Secret</option>
+                <option value="others">others</option>
+              </select>
+            </div>
+
+            <div class="col-sm-4">
+              <p>
+                Date: <input name="date" type="text" id="datepicker" required />
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <hr />
+
+        <button type="submit" class="btn btn-primary btn-lg btn-dark btn-style">
+          <i class="fas fa-plus btn-icons"></i>ADD
+        </button>
+
+        <hr />
+      </form>
+
+      <!-- The container where all the tasks will be visible -->
+
+      <% for(let i of task_list){%>
+      <div class="input-group-text">
+        <input type="checkbox" aria-label="Checkbox for following text input" />
+        <p class="task-text"><%= i.task %></p>
+
+        <p class="date"><i class="fas fa-calendar-alt"><%=i.date%></i></p>
+
+        <button type="button" class="btn btn-warning preference-type-btn">
+          <%= i.preference %>
+        </button>
+        <a href="/delete-task">
+          <button
+            type="button"
+            class="btn btn-secondary btn-lg btn-danger btn-style"
+          >
+            <i class="fas fa-trash-alt btn-icons"></i>DELETE
+          </button>
+        </a>
+      </div>
+
+      <% } %>
     </div>
-   
-    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
     <!-- bootstrap plugins -->
     <script
       src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
@@ -120,15 +122,20 @@
       crossorigin="anonymous"
     ></script>
 
-
     <!-- jquery cdn -->
-    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.js"
+      integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+      crossorigin="anonymous"
+    ></script>
     <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-<script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
 
-<!-- font awesome cdn -->
-<script src="https://kit.fontawesome.com/759525c1e5.js" crossorigin="anonymous"></script>
+    <!-- font awesome cdn -->
+    <script
+      src="https://kit.fontawesome.com/759525c1e5.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="/js/home.js"></script>
-   
   </body>
 </html>

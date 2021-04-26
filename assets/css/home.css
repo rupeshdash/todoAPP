@@ -13,7 +13,7 @@ body{
 }
 
 #todo-container{
-    height: 40rem;
+    height: auto;
     width: 50%;
     margin-left: 25%;
     background-color: white;
@@ -46,4 +46,14 @@ body{
 }
 i{
     padding: 2%;
+}
+
+.task-text{
+    padding: 1%;
+    margin: inherit;
+    
+}
+.date{
+    padding: 1%;
+    margin: 1%;
 }
