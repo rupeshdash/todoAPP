@@ -1,13 +1,8 @@
 const Task = require("../models/task");
 
 
+// controller to the post request recieved from the task submission form
 module.exports.task = function(req,res){
-    // console.log(req.body);
-    
-    // taskList.push(req.body);
-    // console.log(taskList);
-    // return res.redirect('back');
-
     Task.create({
         task : req.body.task,
         preference : req.body.preference,
@@ -37,5 +32,17 @@ module.exports.home = function(req,res){
 
     
 }
+module.exports.delete = function(req,res){
+    let id = req.query.id;
+    console.log(id);
+   
+    Task.findByIdAndDelete(id,function(err){
+        if(err){
+            console.log("Cannot delete the task");
+            return;
+        }
 
-// controller to the post request recieved from the task submission form
+        return res.redirect('back');
+    })
+}
+
